@@ -1,39 +1,40 @@
 import random
 
-class Gestor_Archivo:
-  def generar_archivo(self):
+class FileManager:
+    def generate_file(self):
+        with open("1000_names.txt", "w") as f:
+            for name, age in zip(self.generate_names(), self.generate_ages()):
+                data = f"{name},{age}\n"
+                f.write(data)
 
-    with open("Archivo.txt", "w") as f:
-        for j,k in list(zip(self.generar_nombres(),self.generar_edades())):
-          var = str(j)+","+str(k)
-          f.write(f"{var}\n")
+    def read_file(self):
+        pass
 
-  def leer_archivo(self):
-    pass
-  
-  def escribir_archivo(self):
-    pass
+    def write_file(self):
+        pass
 
-  def generar_nombres(self):
-    letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    nombres = []
-    for i in range(1000):
-      tam = random.randint(1,10)
-      nombre = ""
-      for j in range(tam):
-        nombre += random.choice(letters)
-      nombres.append(nombre)
-    return nombres
+    def generate_names(self):
+        letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        names = []
+        for _ in range(1000):
+            length = random.randint(1, 10)
+            name = ""
+            for _ in range(length):
+                name += random.choice(letters)
+            names.append(name)
+        return names
 
-  def generar_edades(self):
-    edades = []
-    for i in range(1000):
-      num = random.randint(1,99)
-      edades.append(num)
-    return edades
-  def crear_personas(self):
-    pass
+    def generate_ages(self):
+        ages = []
+        for _ in range(1000):
+            age = random.randint(1, 99)
+            ages.append(age)
+        return ages
 
-ga = Gestor_Archivo()
+    def create_people(self):
+        pass
 
-ga.generar_archivo()
+file_manager = FileManager()
+file_manager.generate_file()
+print("File generated successfully.")
+file_manager.generate_names()
